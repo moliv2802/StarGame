@@ -9,11 +9,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class StarGame extends ApplicationAdapter {
     private SpriteBatch batch;
     private Background background;
+    private Ship ship;
+
+    public Ship getShip() {
+        return ship;
+    }
 
     @Override
     public void create() {
         batch = new SpriteBatch();
-        background = new Background();
+        background = new Background(this);
+        ship = new Ship();
     }
 
     @Override
@@ -24,11 +30,13 @@ public class StarGame extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         background.render(batch);
+        ship.render(batch);
         batch.end();
     }
 
     public void update(float dt) {
         background.update(dt);
+        ship.update(dt);
     }
 
     @Override

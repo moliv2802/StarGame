@@ -40,6 +40,11 @@ public class Ship {
             position.x += (float) Math.cos(Math.toRadians(angle)) * 240.f * dt;
             position.y += (float) Math.sin(Math.toRadians(angle)) * 240.f * dt;
             lastDisplacement.set((float) Math.cos(Math.toRadians(angle)) * 240.f * dt, (float) Math.sin(Math.toRadians(angle)));
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.S)){
+            position.x -= ((float) Math.cos(Math.toRadians(angle)) * 240.f * dt) / 2;
+            position.y -= ((float) Math.sin(Math.toRadians(angle)) * 240.f * dt) / 2;
+            lastDisplacement.set((float) Math.cos(Math.toRadians(angle)) * 240.f * dt, (float) Math.sin(Math.toRadians(angle)));
         } else {
             lastDisplacement.set(0, 0);
         }

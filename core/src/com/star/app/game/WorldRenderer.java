@@ -20,6 +20,7 @@ public class WorldRenderer {
         gc.getBackground().render(batch);
         gc.getShip().render(batch);
         gc.getBulletController().render(batch);
+        gc.getAsteroidController().render(batch);
         batch.end();
     }
 }

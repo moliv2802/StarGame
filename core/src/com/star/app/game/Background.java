@@ -1,5 +1,7 @@
 package com.star.app.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
@@ -36,6 +38,7 @@ public class Background {
     private Texture textureCosmos;
     private Texture textureStar;
     private Star[] stars;
+    private Asteroid asteroid;
 
     public Background(GameController gc) {
         this.gc = gc;
@@ -60,6 +63,9 @@ public class Background {
     public void update(float dt) {
         for (int i = 0; i < stars.length; i++) {
             stars[i].update(dt);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
+            gc.getAsteroidController().setup(MathUtils.random(128, ScreenManager.SCREEN_WIDTH), 0, 0, (float) MathUtils.random(100, 1000));
         }
     }
 }

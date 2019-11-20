@@ -4,6 +4,7 @@ public class GameController {
     private Background background;
     private BulletController bulletController;
     private Ship ship;
+    private AsteroidController asteroidController;
 
     public BulletController getBulletController() {
         return bulletController;
@@ -17,27 +18,33 @@ public class GameController {
         return ship;
     }
 
+    public AsteroidController getAsteroidController() {
+        return asteroidController;
+    }
+
     public GameController() {
         this.background = new Background(this);
         this.ship = new Ship(this);
         this.bulletController = new BulletController();
+        this.asteroidController = new AsteroidController();
     }
 
     public void update(float dt) {
         background.update(dt);
         ship.update(dt);
         bulletController.update(dt);
-        checkCollisions();
+        asteroidController.update(dt);
+//        checkCollisions();
     }
 
     // Заготовка под столкновение с астероидами (для ДЗ)
-    public void checkCollisions() {
-        for (int i = 0; i < bulletController.getActiveList().size(); i++) {
-            Bullet b = bulletController.getActiveList().get(i);
-            if (ship.getPosition().dst(b.getPosition()) < 32.0f) { // 32.0f - примерно радиус корабля
-                // b.deactivate();
-                // считаем что столкнулись
-            }
-        }
-    }
+//    public void checkCollisions() {
+//        for (int i = 0; i < asteroidController.getActiveList().size(); i++) {
+//            Asteroid b = asteroidController.getActiveList().get(i);
+//            if () { // 32.0f - примерно радиус корабля
+//                // b.deactivate();
+//                // считаем что столкнулись
+//            }
+//        }
+//    }
 }
